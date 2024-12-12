@@ -60,7 +60,7 @@ public class StudentController {
       return "/Students/initUpdate";
    }
 
-   @GetMapping("/updateStudent")
+   @PostMapping("/updateStudent")
    public String updateStudent(@Valid @ModelAttribute("student") Students students, Model model) {
       boolean result = studentService.saveStudent(students);
       if(result) {
