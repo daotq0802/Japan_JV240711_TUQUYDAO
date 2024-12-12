@@ -61,7 +61,7 @@ public class StudentController {
    }
 
    @GetMapping("/updateStudent")
-   public String updateStudent(@RequestParam("id") Students students, Model model) {
+   public String updateStudent(@Valid @ModelAttribute("student") Students students, Model model) {
       boolean result = studentService.saveStudent(students);
       if(result) {
          return "redirect:/students/allStudents";
