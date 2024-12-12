@@ -1,5 +1,6 @@
 package controller;
 
+import model.Classes;
 import model.Students;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -50,6 +51,13 @@ public class StudentController {
    public String deleteStudent(@RequestParam("id") int id, Model model) {
       studentService.deleteStudent(studentService.getStudentById(id));
       return "redirect:/students/allStudents";
+   }
+
+   @GetMapping("/initUpdate")
+   public String initUpdate(@RequestParam("id") int id, Model model) {
+      Students student = studentService.getStudentById(id);
+      model.addAttribute("student", student);
+      return "/Students/initUpdate";
    }
 
    @GetMapping("/updateStudent")
